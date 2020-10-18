@@ -108,6 +108,7 @@ public struct ModelPages<Data, Content>: View where Data: RandomAccessCollection
                 transitionStyle: transitionStyle,
                 bounce: bounce,
                 wrap: wrap,
+                animated: true,
                 controllers: (0..<items.count).map { i in
                     let h = UIHostingController(rootView: template(i, items[i]))
                     h.view.backgroundColor = .clear
