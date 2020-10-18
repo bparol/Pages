@@ -40,6 +40,7 @@ public struct Pages: View {
     var hasControl: Bool
     var pageControl: UIPageControl? = nil
     var controlAlignment: Alignment
+    var animated: Bool
 
     /**
     Creates the paging view that generates user-defined static pages.
@@ -79,6 +80,7 @@ public struct Pages: View {
         hasControl: Bool = true,
         control: UIPageControl? = nil,
         controlAlignment: Alignment = .bottom,
+        animated: Bool,
         @PagesBuilder pages: () -> [AnyView]
     ) {
         self.navigationOrientation = navigationOrientation
@@ -88,6 +90,7 @@ public struct Pages: View {
         self.hasControl = hasControl
         self.pageControl = control
         self.controlAlignment = controlAlignment
+        self.animated = animated
         self.pages = pages()
         self._currentPage = currentPage
     }
@@ -100,6 +103,7 @@ public struct Pages: View {
                 transitionStyle: transitionStyle,
                 bounce: bounce,
                 wrap: wrap,
+                animated: animated,
                 controllers: pages.map {
                     let h = UIHostingController(rootView: $0)
                     h.view.backgroundColor = .clear

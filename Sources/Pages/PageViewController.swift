@@ -36,6 +36,7 @@ struct PageViewController: UIViewControllerRepresentable {
     var transitionStyle: UIPageViewController.TransitionStyle
     var bounce: Bool
     var wrap: Bool
+    var animated: Bool
     var controllers: [UIViewController]
 
     func makeCoordinator() -> PagesCoordinator {
@@ -68,7 +69,7 @@ struct PageViewController: UIViewControllerRepresentable {
         pageViewController.setViewControllers(
             [controllers[currentPage]],
             direction: currentPage - previousPage > 0 ? .forward : .reverse,
-            animated: true
+            animated: animated
         )
     }
 
